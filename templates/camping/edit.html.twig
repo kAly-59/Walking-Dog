@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le camping
+{% endblock %}
+
+
+{% block body %}
+
+	<head>
+		<!-- Fichiers CSS -->
+		<link rel="stylesheet" href="{{ asset ('/css/edit.lieu.css') }}"/>
+	</head>
+
+
+	<div class="container">
+		<div class="offset-md-1">
+			<div class="form" style="width:90%;">
+				<h1>Modifier le camping</h1>
+				{{ include('camping/_form.html.twig') }}
+				<a href="{{ path('profil_affichage') }}" class="fas fa-undo-alt" title="Retour" id="retour"> RETOUR</a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

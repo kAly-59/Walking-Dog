@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<head>
+
+    <title>
+        {% block title %}Ajouter un hotel
+        {% endblock %}
+    </title>
+    <!-- Fichiers CSS -->
+    <link rel="stylesheet" href="{{ asset ('/css/ajout.lieu.css') }}" />
+
+</head>
+
+{{ form_start (formHotel)}}
+
+<div class="container">
+    <div class="offset-md-1">
+        <div class="form" style="width:90%;">
+            <h1>Ajouter un hotel</h1>
+
+            {{ form_row(formHotel.nom, {} ) }}
+
+            {{ form_row(formHotel.type, {} ) }}
+
+            {{ form_row(formHotel.adresse, {'id': 'adresse', 'attr': {'class': 'custom-class'}}
+            ) }}
+
+            {{ form_row(formHotel.codePostal, {'id': 'cp', 'attr': {'class': 'custom-class'}}
+            ) }}
+
+            {{ form_row(formHotel.ville, {'id': 'ville', 'attr': {'class': 'custom-class'}}
+            ) }}
+
+            {{ form_row(formHotel.autorisation, {}) }}
+
+            {{ form_row(formHotel.lat,  {'id': 'lat', 'attr': {'class': 'custom-class'}}
+            ) }}
+
+            {{ form_row(formHotel.lon,  {'id': 'lon', 'attr': {'class': 'custom-class'}}
+            ) }}
+
+            {{ form_widget(formHotel.valider, { 'attr': {'class': 'btn', 'type': 'button' }}) }}
+
+            {{ form_end(formHotel) }}
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
+
+{% endblock %}

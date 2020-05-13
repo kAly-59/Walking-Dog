@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<head>
+
+		<title>
+			{% block title %}Ajouter un camping
+			{% endblock %}
+		</title>
+		<!-- Fichiers CSS -->
+		<link rel="stylesheet" href="{{ asset ('/css/ajout.lieu.css') }}"/>
+
+	</head>
+
+	{{ form_start (formCamping)}}
+
+	<div class="container">
+		<div class="offset-md-1">
+			<div class="form" style="width:90%;">
+				<h1>Ajouter un camping</h1>
+
+				{{ form_row(formCamping.nom, {} ) }}
+
+				{{ form_row(formCamping.type, {} ) }}
+
+				{{ form_row(formCamping.adresse, {'id': 'adresse', 'attr': {'class': 'custom-class'}}
+				) }}
+
+				{{ form_row(formCamping.codePostal, {'id': 'cp', 'attr': {'class': 'custom-class'}}
+				) }}
+
+				{{ form_row(formCamping.ville, {'id': 'ville', 'attr': {'class': 'custom-class'}}
+				) }}
+
+				{{ form_row(formCamping.autorisation, {}) }}
+
+				{{ form_row(formCamping.lat,  {'id': 'lat', 'attr': {'class': 'custom-class'}}
+				) }}
+
+				{{ form_row(formCamping.lon,  {'id': 'lon', 'attr': {'class': 'custom-class'}}
+				) }}
+
+				{{ form_widget(formCamping.valider, { 'attr': {'class': 'btn', 'type': 'button' }}) }}
+
+				{{ form_end(formCamping) }}
+			</div>
+		</div>
+	</div>
+
+	{% block javascripts %}
+		{{ parent() }}
+	{% endblock %}
+
+{% endblock %}

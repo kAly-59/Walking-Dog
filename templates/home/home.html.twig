@@ -1,0 +1,200 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block body %}
+
+<html>
+
+<head>
+
+	<title>WAF</title>
+
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no"> -->
+
+	<!-- LEAFLET MAP -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/esri-leaflet-geocoder/2.3.2/esri-leaflet-geocoder.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ asset ('/css/home.css') }}" />
+
+	<!-- LEAFLET MAP -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <!-- Bootstrap  -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+</head>
+
+<body>
+
+	<div class="col-md-12" id="maCarte">		
+		<div class="col-md-3" style="z-index: 1001" id="block_btn">
+			<!-- Si connecté ou déconnecté -->
+			{% if not app.user %}
+			<div class="col-md-3" id="block_btn_1">
+				<!-- Button modal -->
+				<button class="fas fa-sign-in-alt" id="btn_con" type="button" title="Connexion" data-toggle="modal"
+					data-target="#ModalCenter"></button>	
+				<a href="/inscription">
+					<button class="fas fa-user-plus" id="btn_ins" type="button" title="Inscription"></button>
+				</a>
+			</div>
+			{% else %}
+			<div class="col-md-3" id="block_btn_2">
+				<!--btn profil -->
+				<a href="/profil">
+					<button class="fas fa-user-alt" id="btn_pro" type="button" title="Profil"></button>
+				</a>
+				<!--btn ajouter -->
+				<a href="/ajouter">
+					<button class="fas fa-plus" id="btn_ajo" type="button" title="Ajouter"></button>
+				</a>
+				<!--btn rechercher -->
+				<!-- <a href="/rechercher">
+					<button class="fas fa-search" id="btn_rec" type="button" title="Rechercher"></button>
+				</a> -->
+				<!--btn déconnexion -->
+				<a href="{{ path('security_logout')}}">
+					<button class="fas fa-sign-out-alt" id="btn_dec" type="button" title="Deconnexion"></button>
+				</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<!-- Modal CONNEXION -->
+	<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						
+						<h1 class="modal-title" id="titre_co">Connexion</h1>
+
+						<button type="button" id="modal_croix" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+					</div>
+
+					<div class="modal-body">
+						<div class="container">
+							<div class="offset-md-1">
+								<div class="form" id="block_form" style="width:90%; ">
+									<form action="{{ path('security_login') }}" method="post" name="myForm">
+										<div class="form-group">
+											<label class="titre_input" for="email">Email</label>
+											<input type="email" placeholder="Adresse email..." required name="_username" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+										</div>
+										<div class="form-group">
+											<label class="titre_input" for="password">Mot de passe</label>
+											<input type="password" placeholder="Mot de passe..." required name="_password" class="form-control" pattern=".{4,}" title="4 caractères minimum">
+											<span id="show-password" class="fas fa-eye-slash"></span>
+										</div>
+										<div class="form-group">
+											<button type="submit" id="btn_co" title="">Connexion</button>
+										</div>
+										<div class="check">
+											<label class="form-check-label" for="materialChecked2">Restez
+																								connecté</label>
+											<input type="checkbox" class="form-check-input" id="checked" checked>
+											<a href="{{ path('app_forgotten_password') }}" id="mdp_oublier">Mot de passe oublié</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+</body>
+
+{% block javascripts %}
+
+<script>
+
+	var carte = L.map('maCarte').setView([46.603354, 1.8883335], 6);
+	L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+		// Il est toujours bien de laisser le lien vers la source des données
+		attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+		minZoom: 5,
+		maxZoom: 17
+	}).addTo(carte);
+
+	// GEOLOC
+	navigator.geolocation.getCurrentPosition(function(location) {
+    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+	var iconLoc = L.marker(latlng).addTo(carte);
+	});
+
+	// Itinéraire
+	L.Routing.control({
+		// Nous personalisons le tracé
+		lineOptions: {
+			style: [{color: '#ff8f00', opacity: 1, weight: 7}]
+		},
+		// Nous personnalisons la langue et le moyen de transport
+		router: new L.routing.osrmv1({
+			language: 'fr',
+			profile: 'car',
+		}),
+
+		geocoder: L.Control.Geocoder.nominatim()
+	}).addTo(carte)
+ 
+	var marqueurs = L.markerClusterGroup();
+	{% for hotel in hotels %}
+	var hotel = L.marker( [{{hotel.lat}} , {{ hotel.lon }}], {icon: L.AwesomeMarkers.icon({icon: 'fa-hotel', prefix: 'fa', markerColor: 'cadetblue', iconColor: 'white', spin:false})} );//.addTo(carte);
+	hotel.bindPopup("Nom: {{ hotel.Nom }} <br> Autorisation: {{ hotel.autorisation }} <br> Adresse: {{ hotel.adresse }} {{ hotel.codepostal }} {{ hotel.ville }} ")
+	marqueurs.addLayer(hotel); // On ajoute le marqueur au groupe
+	carte.addLayer(marqueurs); // On rajoute la couche avec les cluster pour les afficher
+	{% endfor %}
+	{% for restaurant in restaurants %}
+	var restaurant = L.marker([ {{restaurant.lat}} , {{ restaurant.lon }} ], {icon: L.AwesomeMarkers.icon({icon: 'fa-utensils', prefix: 'fa', markerColor: 'orange ', spin:false})}    );//.addTo(carte);
+	restaurant.bindPopup("Nom: {{ restaurant.Nom }} <br> Autorisation: {{ restaurant.autorisation }} <br> Adresse: {{ restaurant.adresse }} {{ restaurant.codepostal }} {{ restaurant.ville }} ")
+	marqueurs.addLayer(restaurant); // On ajoute le marqueur au groupe
+	carte.addLayer(marqueurs); // On rajoute la couche avec les cluster pour les afficher
+	{% endfor %}
+	{% for camping in campings %}
+	var camping = L.marker([ {{camping.lat}} , {{ camping.lon }} ], {icon: L.AwesomeMarkers.icon({icon: 'fa-campground', prefix: 'fa', markerColor: 'darkgreen', iconColor: 'white', spin:false})} );//.addTo(carte);
+	camping.bindPopup("Nom: {{ camping.Nom }} <br> Autorisation: {{ camping.autorisation }} <br> Adresse: {{ camping.adresse }} {{ camping.codepostal }} {{ camping.ville }} ")
+	marqueurs.addLayer(camping); // On ajoute le marqueur au groupe
+	carte.addLayer(marqueurs); // On rajoute la couche avec les cluster pour les afficher
+	{% endfor %}
+	{% for veterinaire in veterinaires %}
+	var veterinaire = L.marker([ {{veterinaire.lat}} , {{ veterinaire.lon }} ], {icon: L.AwesomeMarkers.icon({icon: 'fa-paw', prefix: 'fa', markerColor: 'darkpurple', spin:false})} );//.addTo(carte);
+	veterinaire.bindPopup("Nom: {{ veterinaire.Nom }}  <br> Adresse: {{ veterinaire.adresse }} {{ veterinaire.codepostal }} {{ veterinaire.ville }} ")
+	marqueurs.addLayer(veterinaire); // On ajoute le marqueur au groupe
+	carte.addLayer(marqueurs); // On rajoute la couche avec les cluster pour les afficher
+	{% endfor %}
+
+</script>
+<script type="text/javascript" src="{{ asset ('js/home.js') }}"></script>
+{% endblock %}
+
+</html>
+
+{% endblock %}
+
+
+<!-- <div id="block_rechercher" style="z-index: 900" >
+					<label for="champ-ville" id="icone-recherche" class="fas fa-search-location"></label>
+					<input type="search" id="champ-ville" placeholder="  Taper votre recherche...">
+				</div> -->

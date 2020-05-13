@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block body %}
+
+<head>
+    <!-- Bootstrap table -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/bootstrap-table.min.css">
+    <!-- Fichiers CSS -->
+    <link rel="stylesheet" href="{{ asset ('/css/admin.css') }}" />
+    <!-- Bootstrap table-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/locale/bootstrap-table-fr-FR.min.js"></script>
+</head>
+
+<div id="block_users">
+    <div class="row">
+        <div class="offset-2 col-md-8" id="block_users">
+            <table class="table" data-toggle="table" data-search="true" data-show-columns="true" data-pagination="true">
+                <h1>Liste des utilisateurs</h1>
+                <thead id="titleTab">
+                    <tr>
+                        <th data-sortable="true">ID</th>
+                        <th data-sortable="true">Email</th>
+                        <th data-sortable="true">Pseudo</th>
+                        <th data-sortable="true">Rôles</th>
+                        <th data-sortable="true">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# On boucle sur les utilisateurs #}
+                    {% for user in users %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.username}}</td>
+                        <td>
+                            {% for role in user.roles %}
+                            {% if role == "ROLE_USER" %}
+                            Utilisateur
+                            {% elseif role == "ROLE_MODERATEUR" %}
+                            Modérateur
+                            {% elseif role == "ROLE_ADMIN" %}
+                            Administrateur
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a target="_self" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">
+                                <input type="button" id="btn_modifier_users" value="Modifier l'utilisateur"></a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">Il n'y a pas d'utilisateur inscrit</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="offset-2 col-md-8" id="block_lieux">
+            <table class="table" data-toggle="table" data-search="true" data-show-columns="true" data-pagination="true">
+                <h1>Liste de tout les lieux</h1>
+                <thead id="titleTab">
+                    <tr>
+                        <th data-sortable="true">Type</th>
+                        <th data-sortable="true">Nom</th>
+                        <th data-sortable="true">Autorisation</th>
+                        <th data-sortable="true">Adresse</th>
+                        <th data-sortable="true">Ville</th>
+                        <th data-sortable="true">Code Postal</th>
+                        <th data-sortable="true">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hotel in hotels %}
+                    <tr>
+                        <td>{{ hotel.type }}</td>
+                        <td>{{ hotel.Nom }}</td>
+                        <td>{{ hotel.autorisation }}</td>
+                        <td>{{ hotel.adresse }}</td>
+                        <td>{{ hotel.ville }}</td>
+                        <td>{{ hotel.codepostal }}</td>
+                        <td>
+                            <a class="fas fa-edit" href="{{ path('hotel_edit', {'id':hotel.id}) }}"
+                                id="btn_modifier_lieu" title="Modifier"></a>
+                            <a class="fas fa-trash-alt" href="{{ path('hotel_delete', {'id':hotel.id}) }}"
+                                id="btn_supprimer_lieu" title="Supprimer"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for restaurant in restaurants %}
+                    <tr>
+                        <td>{{ restaurant.type }}</td>
+                        <td>{{ restaurant.Nom }}</td>
+                        <td>{{ restaurant.autorisation }}</td>
+                        <td>{{ restaurant.adresse }}</td>
+                        <td>{{ restaurant.ville }}</td>
+                        <td>{{ restaurant.codepostal }}</td>
+                        <div class="row">
+                            <td>
+                                <a class="fas fa-edit" href="{{ path('restaurant_edit', {'id':restaurant.id}) }}"
+                                    id="btn_modifier_lieu" title="Modifier"></a>
+                                <a class="fas fa-trash-alt" href="{{ path('restaurant_delete', {'id':restaurant.id}) }}"
+                                    id="btn_supprimer_lieu" title="Supprimer"></a>
+                            </td>
+                        </div>
+                    </tr>
+                    {% endfor %}
+                    {% for camping in campings %}
+                    <tr>
+                        <td>{{ camping.type }}</td>
+                        <td>{{ camping.Nom }}</td>
+                        <td>{{ camping.autorisation }}</td>
+                        <td>{{ camping.adresse }}</td>
+                        <td>{{ camping.ville }}</td>
+                        <td>{{ camping.codepostal }}</td>
+                        <td>
+                            <a class="fas fa-edit" href="{{ path('camping_edit', {'id':camping.id}) }}"
+                                id="btn_modifier_lieu" title="Modifier"></a>
+                            <a class="fas fa-trash-alt" href="{{ path('camping_delete', {'id':camping.id}) }}"
+                                id="btn_supprimer_lieu" title="Supprimer"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for veterinaire in veterinaires %}
+                    <tr>
+                        <td>{{ veterinaire.type }}</td>
+                        <td>{{ veterinaire.Nom }}</td>
+                        <td></td>
+                        <td>{{ veterinaire.adresse }}</td>
+                        <td>{{ veterinaire.ville }}</td>
+                        <td>{{ veterinaire.codepostal }}</td>
+                        <td>
+                            <a class="fas fa-edit" href="{{ path('veterinaire_edit', {'id':veterinaire.id}) }}"
+                                id="btn_modifier_lieu" title="Modifier"></a>
+                            <a class="fas fa-trash-alt" href="{{ path('veterinaire_delete', {'id':veterinaire.id}) }}"
+                                id="btn_supprimer_lieu" title="Supprimer"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

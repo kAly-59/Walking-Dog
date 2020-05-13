@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+{% block title %}Profil{% endblock %}
+{% block body %}
+
+<head>
+
+	<!-- Bootstrap table -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/bootstrap-table.min.css">
+	<!-- Fichiers CSS -->
+	<link rel="stylesheet" href="{{ asset ('/css/profil.css') }}" />
+	<!-- Bootstrap table-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/locale/bootstrap-table-fr-FR.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+</head>
+
+<body>
+
+	<div id="La_grosse">
+		<div id="block_info">
+			<div class="row">
+				<div class="offset-0 col-md-3" id="block_profil">
+					<h2 class="text" id="username">{{ user.username }}</h2>
+					<img src="{{ asset('uploads/images/' ~ user.image) }}" id="picture_profil" title="Photo de profil"
+						alt="Photo de profil" />
+					<h2 id="title_para">Paramètres</h2>
+					<a href="{{ path('user_edit', {'id':user.id}) }}">
+						<input type="button" id="btn_supp_profil" value="Modifier le profil" title="Modifier le profil">
+					</a><br>
+					<div>
+						<button id="btn_supp_profil" type="button"  data-toggle="modal" data-target="#image">
+							Modifier votre image
+						</button>
+					</div>
+					{% for role in user.roles %}
+					{% if role == "ROLE_ADMIN" %}
+					<a href="/admin/utilisateurs">
+						<input type="button" id="btn_admin" value="Administration" title="Administration">
+					</a><br>
+					{% endif %}
+					{% endfor %}
+					<a href="{{ path('profil_delete_user', {'id':user.id}) }}" target="_blank" title="Supprimer le profil">
+						<input type="button" id="btn_supp_profil" value="Supprimer le profil">
+					</a><br>
+				</div>
+				<div id="tableau" class="col-md-8">
+					<table class="table" data-toggle="table" data-search="true" data-show-columns="true"
+						data-pagination="true">
+						<h1 id="myHeader">Liste de vos lieux</h1>
+						<thead id="titleTab">
+							<tr>
+								<th data-sortable="true">Type</th>
+								<th data-sortable="true">Nom</th>
+								<th data-sortable="true">Autorisation</th>
+								<th data-sortable="true">Adresse</th>
+								<th data-sortable="true">Ville</th>
+								<th data-sortable="true">Code Postal</th>
+								<th data-sortable="true">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for hotel in hotels %}
+							<tr>
+								<td>{{ hotel.type }}</td>
+								<td>{{ hotel.Nom }}</td>
+								<td>{{ hotel.autorisation }}</td>
+								<td>{{ hotel.adresse }}</td>
+								<td>{{ hotel.ville }}</td>
+								<td>{{ hotel.codepostal }}</td>
+								<td>
+									<a class="fas fa-edit" href="{{ path('hotel_edit', {'id':hotel.id}) }}"
+										id="btn_modifier_lieu" title="Modifier"></a>
+									<a class="fas fa-trash-alt" href="{{ path('hotel_delete', {'id':hotel.id}) }}"
+										id="btn_supprimer_lieu" title="Supprimer"></a>
+								</td>
+							</tr>
+							{% endfor %}
+							{% for restaurant in restaurants %}
+							<tr>
+								<td>{{ restaurant.type }}</td>
+								<td>{{ restaurant.Nom }}</td>
+								<td>{{ restaurant.autorisation }}</td>
+								<td>{{ restaurant.adresse }}</td>
+								<td>{{ restaurant.ville }}</td>
+								<td>{{ restaurant.codepostal }}</td>
+								<div class="row">
+									<td>
+										<a class="fas fa-edit"
+											href="{{ path('restaurant_edit', {'id':restaurant.id}) }}"
+											id="btn_modifier_lieu" title="Modifier"></a>
+										<a class="fas fa-trash-alt"
+											href="{{ path('restaurant_delete', {'id':restaurant.id}) }}"
+											id="btn_supprimer_lieu" title="Supprimer"></a>
+									</td>
+								</div>
+							</tr>
+							{% endfor %}
+							{% for camping in campings %}
+							<tr>
+								<td>{{ camping.type }}</td>
+								<td>{{ camping.Nom }}</td>
+								<td>{{ camping.autorisation }}</td>
+								<td>{{ camping.adresse }}</td>
+								<td>{{ camping.ville }}</td>
+								<td>{{ camping.codepostal }}</td>
+								<td>
+									<a class="fas fa-edit" href="{{ path('camping_edit', {'id':camping.id}) }}"
+										id="btn_modifier_lieu" title="Modifier"></a>
+									<a class="fas fa-trash-alt" href="{{ path('camping_delete', {'id':camping.id}) }}"
+										id="btn_supprimer_lieu" title="Supprimer"></a>
+								</td>
+							</tr>
+							{% endfor %}
+							{% for veterinaire in veterinaires %}
+							<tr>
+								<td>{{ veterinaire.type }}</td>
+								<td>{{ veterinaire.Nom }}</td>
+								<td></td>
+								<td>{{ veterinaire.adresse }}</td>
+								<td>{{ veterinaire.ville }}</td>
+								<td>{{ veterinaire.codepostal }}</td>
+								<td>
+									<a class="fas fa-edit" href="{{ path('veterinaire_edit', {'id':veterinaire.id}) }}"
+										id="btn_modifier_lieu" title="Modifier"></a>
+									<a class="fas fa-trash-alt"
+										href="{{ path('veterinaire_delete', {'id':veterinaire.id}) }}"
+										id="btn_supprimer_lieu" title="Supprimer"></a>
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Modifier lieux -->
+	<div id="block_modal_modifier_lieux">
+		<div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="title_photo">Modifier votre photo</h4>
+						<button type="button" id="modal_croix" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form" style="width:100%;">
+							{{ form_start(formImage) }}
+							{{ form_row(formImage.image) }}
+							{{ form_widget(formImage.valider, {'attr': {'class': 'btn_valider'}}) }}
+							{{ form_end(formImage) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+{% endblock %}

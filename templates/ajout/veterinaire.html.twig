@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<head>
+
+		<title>
+			{% block title %}Ajouter un vétérinaire
+			{% endblock %}
+		</title>
+		<!-- Fichiers CSS -->
+		<link rel="stylesheet" href="{{ asset ('/css/ajout.lieu.css') }}"/>
+
+	</head>
+
+{{ form_start (formVeterinaire)}}
+
+<div class="container">
+    <div class="offset-md-1">
+        <div class="form" style="width:90%;">
+            <h1>Ajouter un vétérinaire</h1>
+
+            {{ form_row(formVeterinaire.nom, {} ) }}
+
+            {{ form_row(formVeterinaire.type, {} ) }}
+
+            {{ form_row(formVeterinaire.adresse, {'id': 'adresse', 'attr': {'class': 'custom-class'}} ) }}
+
+            {{ form_row(formVeterinaire.codePostal, {'id': 'cp', 'attr': {'class': 'custom-class'}} ) }}
+
+            {{ form_row(formVeterinaire.ville, {'id': 'ville', 'attr': {'class': 'custom-class'}} ) }}
+
+            {{ form_row(formVeterinaire.lat,  {'id': 'lat', 'attr': {'class': 'custom-class'}} ) }}
+
+            {{ form_row(formVeterinaire.lon,  {'id': 'lon', 'attr': {'class': 'custom-class'}} ) }}
+
+            {{ form_widget(formVeterinaire.valider, { 'attr': {'class': 'btn', 'type': 'button' }}) }}
+
+            {{ form_end(formVeterinaire) }}
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,158 @@
+body {
+  background-color: rgb(240, 240, 240);
+  width: auto;
+  height: auto;
+  overflow-x: hidden;
+}
+
+#boutonNav {
+  color: rgb(255, 255, 255);
+}
+
+#boutonNav:hover {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+li.nav-item {
+  background-color: rgb(130, 40, 40);
+  margin-left: 30px;
+}
+
+#block {
+  margin-top: 2%;
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+  font-size: 4em;
+}
+
+#cat1 {
+  margin-top: 6%;
+}
+
+#cat2 {
+  margin-top: 5%;
+}
+
+#cat3 {
+  margin-top: 5%;
+}
+
+#cat4 {
+  margin-top: 5%;
+}
+
+.container {
+  text-align: center;
+}
+
+#btn1 {
+  font-size: 5em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(130, 40, 40);
+  border-color: rgb(130, 40, 40);
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+  border: none;
+}
+
+#btn1:hover {
+  color: rgb(0, 0, 0);
+}
+
+#btn2 {
+  background-color: rgb(130, 40, 40);
+  border-color: rgb(130, 40, 40);
+  color: rgb(255, 255, 255);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+  border: none;
+}
+
+#btn2:hover {
+  color: rgb(0, 0, 0);
+}
+
+#btn3 {
+  background-color: rgb(130, 40, 40);
+  border-color: rgb(130, 40, 40);
+  color: rgb(255, 255, 255);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+  border: none;
+}
+
+#btn3:hover {
+  color: rgb(0, 0, 0);
+}
+
+
+#btn4 {
+  background-color: rgb(130, 40, 40);
+  border-color: rgb(130, 40, 40);
+  color: rgb(255, 255, 255);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+  padding-left: 5%;
+  margin-left: 25%;
+  border: none;
+}
+
+#btn4:hover {
+  color: rgb(0, 0, 0);
+}
+
+#btn5 {
+  background-color: rgb(130, 40, 40);
+  border-color: rgb(130, 40, 40);
+  color: rgb(255, 255, 255);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+  border: none;
+}
+
+#btn5:hover {
+  color: rgb(0, 0, 0);
+}
+
+#btn6 {
+  background-color: rgb(200, 200, 200);
+  border-color: rgb(130, 40, 40);
+  color: rgb(0, 0, 0);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+}
+
+#btn7 {
+  background-color: rgb(200, 200, 200);
+  border-color: rgb(130, 40, 40);
+  color: rgb(0, 0, 0);
+  font-size: 5em;
+  border-radius: 5%;
+  width: 200px;
+  height: 180px;
+}
+
+/* CSS link color (red) */
+
+a {
+  color: rgb(255, 255, 255);
+}
+
+a:hover {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}

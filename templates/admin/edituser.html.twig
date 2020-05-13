@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block body %}
+
+<head>
+    <!-- Fichiers CSS -->
+    <link rel="stylesheet" href="{{ asset ('/css/admin.edit.user.css') }}" />
+</head>
+
+
+<div class="container">
+    <div class="offset-3 col-md-6">
+        <div class="form">
+            <h1 id="title">Modifier un utilisateur</h1>
+            {{ form(userForm) }}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant
+{% endblock %}
+
+{% block body %}
+
+	<div class="offset-3 col-md-6">
+		<table class="table">
+			<h1 id="myHeader">Supprimer le Restaurant</h1>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ restaurant.id }}</td>
+				</tr>
+				<tr>
+					<th>Autorisation</th>
+					<td>{{ restaurant.autorisation }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ restaurant.nom }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ restaurant.adresse }}</td>
+				</tr>
+				<tr>
+					<th>CodePostal</th>
+					<td>{{ restaurant.codePostal }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ restaurant.ville }}</td>
+				</tr>
+				<tr>
+					<th>Lat</th>
+					<td>{{ restaurant.lat }}</td>
+				</tr>
+				<tr>
+					<th>Lon</th>
+					<td>{{ restaurant.lon }}</td>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<td>{{ restaurant.type }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	{{ include('restaurant/_delete_form.html.twig') }}
+	<a href="{{ path('profil_affichage') }}" class="fas fa-undo-alt" title="Retour" id="retour"> RETOUR</a>
+	{# <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">edit</a> #}
+
+{% endblock %}

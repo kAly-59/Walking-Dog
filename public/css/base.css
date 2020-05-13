@@ -1,0 +1,24 @@
+.nav-item {
+    font-size: 1.7em;
+}
+
+/* Classe principale de la barre de navigation */
+
+.navbar {
+    background-color: rgb(130, 40, 40);
+    width: 100%;
+    height: 6%;
+    z-index: 3;
+}
+
+li {
+    list-style: none;
+}
+
+#footer {
+    margin-top: 3%;
+    color: rgb(130, 40, 40);
+}
+
+
+

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<head>
+
+	<title>
+		{% block title %}Ajouter
+		{% endblock %}
+	</title>
+	<!-- Fichiers CSS -->
+	<link rel="stylesheet" href="{{ asset ('/css/ajouter.css') }}" />
+
+</head>
+
+<body>
+
+	<div class="container" id="block">
+		<div id="title">
+			<h1>Sélectionner une catégorie</h1>
+		</div>
+
+		<div id="cat1">
+			<div class="row">
+				<div class="offset-md-3 col-md-3">
+					<a href="/hotel">
+						<button type="button" id="btn1" class="fas fa-hotel" title="Hotel"></button>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="/restaurant">
+						<button type="button" id="btn2" class="fas fa-utensils" title="Restaurant"></button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="cat2">
+			<div class="row">
+				<div class="offset-md-3 col-md-3">
+					<a href="/camping">
+						<button type="button" id="btn5" class="fas fa-campground" title="Camping"></button>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="/veterinaire">
+						<button type="button" id="btn3" class="fas fa-paw" title="Vétérinaire"></button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		{# <div id="cat3">
+			<div class="row">
+				<div class="offset-md-3 col-md-3">
+					<a href="/parc">
+						<button type="button" id="btn7" class="fas fa-parking" title="Parc"></button>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="/plage">
+						<button type="button" id="btn6" class="fas fa-umbrella-beach" title="Plage"></button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="cat4">
+			<div class="row">
+				<div class="offset-md-4 col-md-3">
+					<a href="/foret">
+						<button type="button" id="btn4" class="fas fa-tree" title="Foret"></button>
+					</a>
+				</div>
+			</div>
+		</div> #}
+	</div>
+
+</body>
+
+{% endblock %}

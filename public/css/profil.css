@@ -1,0 +1,270 @@
+body {
+    background-color: rgb(240, 240, 240);
+    width: auto;
+    height: auto;
+    overflow-x: hidden;
+}
+
+#boutonNav {
+    color: rgb(255, 255, 255);
+}
+
+#boutonNav:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+li.nav-item {
+    background-color: rgb(130, 40, 40);
+    margin-left: 30px;
+}
+
+
+/* BTN DU TAB */
+
+.btn {
+    background-color: rgb(130, 40, 40);
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    color: black;
+    background-color: rgb(130, 40, 40);
+    border: none;
+}
+
+#titleTab {
+    background-color: rgb(130, 40, 40);
+    color: white;
+}
+
+/* BLock avec Username & Photo de profil */
+
+#block_info {
+    margin-top: 3%;
+    text-align: center;
+}
+
+#block_profil {
+    /* border-color: rgb(130, 40, 40); */
+    height: 400px;
+}
+
+#block_users {
+    margin-top: 5%;
+    text-align: center;
+}
+
+#username {
+    margin-top: 2%;
+}
+
+#picture_profil {
+    margin-top: 5%;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-color: rgb(130, 40, 40);
+    border-top-color: rgb(130, 40, 40);
+    border-right-color: rgb(130, 40, 40);
+    border-left-color: rgb(130, 40, 40);
+}
+
+#title_para {
+    margin-top: 10%;
+}
+
+#btn_mod_profil {
+    width: 40%;
+    height: 12%;
+    margin-top: 4%;
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+#btn_mod_profil:hover {
+    color: black;
+}
+
+#btn_supp_profil {
+    width: 40%;
+    height: 12%;
+    margin-top: 4%;
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+#btn_supp_profil:hover {
+    color: black;
+}
+
+#btn_admin {
+    width: 40%;
+    height: 12%;
+    margin-top: 4%;
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+#btn_admin:hover {
+    color: black;
+}
+
+#btn_modifier_lieu {
+    padding-top: 0.6%;
+    margin-left: 14%;
+    width: 100px;
+    font-size: 1.5em;
+    height: 30px;
+    border-radius: 5%;
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+    text-align: center;
+}
+
+#btn_modifier_lieu:hover {
+    color: black;
+}
+
+#btn_supprimer_lieu {
+    padding-top: 1%;
+    margin-left: 5%;
+    font-size: 1.5em;
+    width: 100px;
+    height: 30px;
+    border-radius: 5%;
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    border: none;
+    text-align: center;
+}
+
+#btn_supprimer_lieu:hover {
+    color: black;
+}
+
+a.page-link {
+    color: black;
+    background-color: rgb(130, 40, 40);
+}
+
+a.page-link:hover {
+    color: black;
+    background-color: rgb(130, 40, 40);
+}
+
+#title_photo {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 20%;
+    font-size: 2em;
+  }
+
+form {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.form-control {
+    border-bottom-color: rgb(130, 40, 40);
+    border-style: solid;
+    Border-top: none;
+    border-right: none;
+    Border-left: none;
+}
+
+.form-group {
+    font-size: 1.3em;
+}
+
+.btn_valider {
+    background-color: rgb(130, 40, 40);
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    border: none;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.btn_valider:hover {
+    color: black;
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+    #navbar {
+        background-color: rgb(130, 40, 40);
+        height: 8%;
+    }
+    #tableau {
+        display: block;
+        clear: both;
+        margin-top: 45%;
+    }
+    input[type="text"] {
+        /* margin-left: -12%; */
+        text-align: center;
+    }
+    #titleTab {
+        background-color: rgb(130, 40, 40);
+        color: white;
+        border: none;
+    }
+    .fixed-table-toolbar {
+        padding-right: 8%;
+    }
+    #btn_modifier_lieu {
+        margin-left: 4.5%;
+        text-align: center;
+    }
+    #btn_supprimer_lieu {
+        margin-top: 3%;
+    }
+    navbar-light {
+        border-color: black solid 3px;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1280px) {
+    #navbar {
+        background-color: rgb(130, 40, 40);
+        height: 8%;
+    }
+    #tableau {
+        display: block;
+        clear: both;
+        margin-top: 45%;
+    }
+    input[type="text"] {
+        /* margin-left: -12%; */
+        text-align: center;
+    }
+    #titleTab {
+        background-color: rgb(130, 40, 40);
+        color: white;
+        border: none;
+    }
+    .fixed-table-toolbar {
+        padding-right: 30%;
+    }
+    #btn_modifier_lieu {
+        margin-left: 4.5%;
+        text-align: center;
+    }
+    #btn_supprimer_lieu {
+        margin-top: 3%;
+    }
+    navbar-light {
+        border-color: black solid 3px;
+    }
+}

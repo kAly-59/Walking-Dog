@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotel
+{% endblock %}
+
+{% block body %}
+
+	<div class="offset-3 col-md-6">
+		<table class="table">
+			<h1 id="myHeader">Supprimer l'hotel</h1>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ hotel.id }}</td>
+				</tr>
+				<tr>
+					<th>Autorisation</th>
+					<td>{{ hotel.autorisation }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ hotel.Nom }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ hotel.adresse }}</td>
+				</tr>
+				<tr>
+					<th>CodePostal</th>
+					<td>{{ hotel.codePostal }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ hotel.ville }}</td>
+				</tr>
+				<tr>
+					<th>Lat</th>
+					<td>{{ hotel.lat }}</td>
+				</tr>
+				<tr>
+					<th>Lon</th>
+					<td>{{ hotel.lon }}</td>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<td>{{ hotel.type }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	{{ include('hotel/_delete_form.html.twig') }}
+	<a href="{{ path('profil_affichage') }}" class="fas fa-undo-alt" title="Retour" id="retour"> RETOUR</a>
+	{# <a href="{{ path('hotel_edit', {'id': hotel.id}) }}">edit</a> #}
+
+{% endblock %}

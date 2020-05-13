@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veterinaire index{% endblock %}
+
+{% block body %}
+    <h1>Veterinaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>CodePostal</th>
+                <th>Ville</th>
+                <th>Lat</th>
+                <th>Lon</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for veterinaire in veterinaires %}
+            <tr>
+                <td>{{ veterinaire.id }}</td>
+                <td>{{ veterinaire.nom }}</td>
+                <td>{{ veterinaire.adresse }}</td>
+                <td>{{ veterinaire.codePostal }}</td>
+                <td>{{ veterinaire.ville }}</td>
+                <td>{{ veterinaire.lat }}</td>
+                <td>{{ veterinaire.lon }}</td>
+                <td>{{ veterinaire.type }}</td>
+                <td>
+                    <a href="{{ path('veterinaire_show', {'id': veterinaire.id}) }}">show</a>
+                    <a href="{{ path('veterinaire_edit', {'id': veterinaire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('veterinaire_new') }}">Create new</a>
+{% endblock %}

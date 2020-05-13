@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Camping
+{% endblock %}
+
+
+{% block body %}
+
+
+	<div class="offset-3 col-md-6">
+		<table class="table">
+			<h1 id="myHeader">Supprimer le camping</h1>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ camping.id }}</td>
+				</tr>
+				<tr>
+					<th>Autorisation</th>
+					<td>{{ camping.autorisation }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ camping.nom }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ camping.adresse }}</td>
+				</tr>
+				<tr>
+					<th>CodePostal</th>
+					<td>{{ camping.codePostal }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ camping.ville }}</td>
+				</tr>
+				<tr>
+					<th>Lat</th>
+					<td>{{ camping.lat }}</td>
+				</tr>
+				<tr>
+					<th>Lon</th>
+					<td>{{ camping.lon }}</td>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<td>{{ camping.type }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	{{ include('camping/_delete_form.html.twig') }}
+	<a href="{{ path('profil_affichage') }}" class="fas fa-undo-alt" title="Retour" id="retour"> RETOUR</a>
+	{# <a href="{{ path('camping_edit', {'id': camping.id}) }}">edit</a> #}
+
+{% endblock %}
